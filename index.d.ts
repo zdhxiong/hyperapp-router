@@ -19,12 +19,13 @@ interface RenderProps<P> {
   location: Location;
   match: Match<P>;
 }
+type RenderCallback<P> = (props: RenderProps<P>) => VNode<RenderProps<P>>;
 
 interface RouteProps<P> {
   parent?: boolean;
   path?: string;
   location?: Location;
-  render: (props: RenderProps<P>) => VNode<RenderProps<P>>;
+  render: RenderCallback<P>;
 }
 
 export function Route<P>(
